@@ -336,7 +336,7 @@ footer {
 }
 
 .van-card img {
-  width: 100%;
+  width: 230px;
   height: 230px;
   object-fit: cover;
   border-radius: 5px;
