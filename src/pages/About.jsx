@@ -27,7 +27,7 @@ export default function About() {
             Your destination is waiting. <br />
             Your van is ready.
           </h2>
-          <Link to="/vans">Explore our vans</Link>
+          <Link to="vans">Explore our vans</Link>
         </div>
       </div>
     </section>

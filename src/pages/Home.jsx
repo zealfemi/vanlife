@@ -10,7 +10,7 @@ export default function Home() {
           perfect van to make your perfect road trip.
         </p>
       </div>
-      <Link to="/vans">Find your van</Link>
+      <Link to="vans">Find your van</Link>
     </section>
   );
 }

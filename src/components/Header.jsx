@@ -5,11 +5,11 @@ export default function Header() {
     <header>
       <nav>
         <div className="header-title">
-          <Link to="/">#VANLIFE</Link>
+          <Link to="">#VANLIFE</Link>
         </div>
         <div className="nav-links">
-          <Link to="/about ">about</Link>
-          <Link to="/vans">vans</Link>
+          <Link to="about ">about</Link>
+          <Link to="vans">vans</Link>
         </div>
       </nav>
     </header>
