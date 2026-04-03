@@ -54,7 +54,7 @@ export default function Vans() {
             className="vans-clear-filters-button"
             onClick={() => filterVans("all")}
           >
-            clear filters
+            Clear filters
           </button>
         </div>
 
