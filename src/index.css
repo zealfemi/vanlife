@@ -170,6 +170,7 @@ footer {
 
 .about-hero {
   width: 100%;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,6 +178,11 @@ footer {
 
 .about-hero-img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  -o-object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 
