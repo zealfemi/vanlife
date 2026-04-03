@@ -308,10 +308,15 @@ footer {
     /* justify-content: center; */
     gap: auto;
   }
+
+  .van-card {
+    width: 230px;
+    height: 300px;
+  }
 }
 
 .van-card {
-  /* width: 230px; */
+  width: 100%;
   height: 300px;
   display: flex;
   flex-direction: column;
