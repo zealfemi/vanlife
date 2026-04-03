@@ -144,7 +144,7 @@ footer {
   height: 75px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background: #252525;
   font-style: normal;
   font-weight: 500;

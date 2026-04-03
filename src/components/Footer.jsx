@@ -1,3 +1,8 @@
 export default function Footer() {
-  return <footer>Ⓒ 2026 #VANLIFE</footer>;
+  return (
+    <footer>
+      <span>Ⓒ 2026 #VANLIFE</span>
+      <span>Gbackie</span>
+    </footer>
+  );
 }
