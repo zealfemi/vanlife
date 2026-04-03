@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Vans from "./pages/Vans";
-import Van from "./pages/Van";
+import Van from "./pages/VanDetail";
 
 function App() {
   return (
