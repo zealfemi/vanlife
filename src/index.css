@@ -154,6 +154,11 @@ footer {
   padding: 0 var(--default-padding);
 }
 
+footer a {
+  /* text-decoration: none; */
+  color: #AAAAAA;
+}
+
 /* HOME PAGE*/
 
 .home-section {
