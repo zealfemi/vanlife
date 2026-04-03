@@ -316,8 +316,8 @@ footer {
 }
 
 .van-card {
-  width: 100%;
-  height: 300px;
+  /* width: 100%; */
+  /* height: 300px; */
   display: flex;
   flex-direction: column;
   gap: 10px;
