@@ -295,6 +295,13 @@ footer {
   cursor: pointer;
 }
 
+.filtered-by {
+  color: #4D4D4D;
+  font-style: italic;
+  font-size: 14px;
+  height: 9px;
+}
+
 .vans-cards {
   display: grid;
   grid-template: auto auto / 1fr 1fr;

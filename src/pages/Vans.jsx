@@ -3,6 +3,7 @@ import "../components/server";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
+  const [filtered, setFiltered] = useState("all");
 
   useEffect(() => {
     fetch("/api/vans")
@@ -11,7 +12,7 @@ export default function Vans() {
   }, []);
 
   const vansEl = vans.map((van) => {
-    return (
+    const vanCard = (
       <div className="van-card" key={van.id}>
         <img src={van.imageUrl} alt={van.name} />
         <div className="van-card-details">
@@ -26,7 +27,21 @@ export default function Vans() {
         </div>
       </div>
     );
+
+    if (filtered != "all" && van.type === filtered) {
+      return vanCard;
+    } else if (filtered === "all") {
+      return vanCard;
+    }
   });
+
+  function filterVans(type) {
+    setFiltered(type);
+  }
+
+  function removeFilters() {
+    setFiltered("all");
+  }
 
   return (
     <section className="vans-page-section">
@@ -34,13 +49,19 @@ export default function Vans() {
         <h1>Explore our van options</h1>
         <div className="vans-filters">
           <div className="vans-filter-buttons">
-            <button>simple</button>
-            <button>luxury</button>
-            <button>rugged</button>
+            <button onClick={() => filterVans("simple")}>simple</button>
+            <button onClick={() => filterVans("luxury")}>luxury</button>
+            <button onClick={() => filterVans("rugged")}>rugged</button>
           </div>
 
-          <button className="vans-clear-filters-button">clear filters</button>
+          <button className="vans-clear-filters-button" onClick={removeFilters}>
+            clear filters
+          </button>
         </div>
+
+        <p className="filtered-by">
+          {filtered != "all" && `Filtered by: ${filtered}`}
+        </p>
       </div>
 
       <div className="vans-cards">{vansEl}</div>
