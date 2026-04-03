@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "../components/server";
+import { Link } from "react-router-dom";
+import clsx from "clsx";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
@@ -14,11 +16,15 @@ export default function Vans() {
   const vansEl = vans.map((van) => {
     const vanCard = (
       <div className="van-card" key={van.id}>
-        <img src={van.imageUrl} alt={van.name} />
+        <Link to={`/van/${van.id}`}>
+          <img src={van.imageUrl} alt={van.name} />
+        </Link>
         <div className="van-card-details">
           <div className="van-card-title">
             <p>{van.name}</p>
-            <span className={`van-type-${van.type}`}>{van.type}</span>
+            <span className={`small-button van-type-${van.type}`}>
+              {van.type}
+            </span>
           </div>
           <div className="van-card-pricing">
             <p>${van.price}</p>
@@ -39,15 +45,38 @@ export default function Vans() {
     setFiltered(type);
   }
 
+  // const filteredClass
+
   return (
     <section className="vans-page-section">
       <div className="vans-page-header">
         <h1>Explore our van options</h1>
         <div className="vans-filters">
           <div className="vans-filter-buttons">
-            <button onClick={() => filterVans("simple")}>simple</button>
-            <button onClick={() => filterVans("luxury")}>luxury</button>
-            <button onClick={() => filterVans("rugged")}>rugged</button>
+            <button
+              onClick={() => filterVans("simple")}
+              className={clsx("small-button", {
+                "van-type-simple": filtered === "simple",
+              })}
+            >
+              simple
+            </button>
+            <button
+              onClick={() => filterVans("luxury")}
+              className={clsx("small-button", {
+                "van-type-luxury": filtered === "luxury",
+              })}
+            >
+              luxury
+            </button>
+            <button
+              onClick={() => filterVans("rugged")}
+              className={clsx("small-button", {
+                "van-type-rugged": filtered === "rugged",
+              })}
+            >
+              rugged
+            </button>
           </div>
 
           <button
