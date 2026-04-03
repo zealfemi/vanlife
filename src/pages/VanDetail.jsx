@@ -1,31 +1,43 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../components/server";
 import arrow from "../assets/arrow.svg";
-import { Link } from "react-router-dom";
-import vanImg from "../assets/home-hero.png";
+import { Link, useParams } from "react-router-dom";
+import "../components/server";
 
 export default function Van() {
+  const params = useParams();
+
+  const [van, setVan] = useState({});
+
   useEffect(() => {
-    fetch();
+    fetch(`/api/vans/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => setVan(data.vans));
   }, []);
+
+  console.log(van);
 
   return (
     <section className="van-details-section">
-      <Link to="vans" className="van-details-breadcrumb">
+      <Link to="/vans" className="van-details-breadcrumb">
         <img src={arrow} alt="arrow back" />
         <span>Back to all vans</span>
       </Link>
 
       <div>
-        <img src={vanImg} alt="van image" className="van-image" />
+        <img src={van.imageUrl} alt="van image" className="van-image" />
 
         <div className="van-details">
-          <span className={`small-button van-type-simple`}>van type</span>
-          <h1>van name</h1>
+          <span className={`small-button van-type-${van.type}`}>
+            {van.type}
+          </span>
+          <h1>{van.name}</h1>
           <h2>
-            $50<span>/day</span>
+            ${van.price}
+            <span>/day</span>
           </h2>
-          <p>van desc</p>
+          <p>{van.description}</p>
+
           <button className="big-button">Rent this van</button>
         </div>
       </div>
