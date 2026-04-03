@@ -253,11 +253,13 @@ footer {
   display: flex;
   align-items: start;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
+  gap: 10px;
 }
 
 .vans-filter-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
