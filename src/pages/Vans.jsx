@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../components/server";
+import "../server";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 
