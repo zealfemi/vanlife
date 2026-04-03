@@ -39,10 +39,6 @@ export default function Vans() {
     setFiltered(type);
   }
 
-  function removeFilters() {
-    setFiltered("all");
-  }
-
   return (
     <section className="vans-page-section">
       <div className="vans-page-header">
@@ -54,7 +50,10 @@ export default function Vans() {
             <button onClick={() => filterVans("rugged")}>rugged</button>
           </div>
 
-          <button className="vans-clear-filters-button" onClick={removeFilters}>
+          <button
+            className="vans-clear-filters-button"
+            onClick={() => filterVans("all")}
+          >
             clear filters
           </button>
         </div>
