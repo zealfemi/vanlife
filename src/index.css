@@ -320,7 +320,6 @@ footer {
   /* height: 300px; */
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -343,6 +342,7 @@ footer {
 .van-card-details {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .van-card-title {
