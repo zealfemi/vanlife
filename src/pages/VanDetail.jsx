@@ -41,7 +41,7 @@ export default function Van() {
           </div>
         </div>
       ) : (
-        "Loading..."
+        <h2>Loading...</h2>
       )}
     </section>
   );
