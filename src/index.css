@@ -299,12 +299,13 @@ footer a {
 
 .vans-clear-filters-button {
   border: none;
+  white-space: nowrap;
   background: none;
   text-align: left;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   text-decoration-line: underline;
   color: #4D4D4D;
