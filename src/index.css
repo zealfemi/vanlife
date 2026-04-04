@@ -433,6 +433,7 @@ button.van-type-luxury {
   object-fit: cover;
   width: 100%;
   /* max-height: 490px; */
+  border-radius: 10px;
 }
 
 .van-details {
