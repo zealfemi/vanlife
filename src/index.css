@@ -627,6 +627,7 @@ nav.host-page-nav {
 .listed-van-nav {
   display: flex;
   justify-content: start;
+  flex-wrap: wrap;
   margin-top: 27px;
   margin-bottom: 27px;
 }
