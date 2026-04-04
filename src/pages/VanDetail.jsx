@@ -23,7 +23,7 @@ export default function Van() {
       </Link>
 
       <div>
-        <img src={van.imageUrl} alt="van image" className="van-image" />
+        <img src={van.imageUrl} alt={van.name} className="van-image" />
 
         <div className="van-details">
           <span className={`small-button van-type-${van.type}`}>
