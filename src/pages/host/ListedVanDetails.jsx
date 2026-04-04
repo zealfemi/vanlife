@@ -13,7 +13,7 @@ export default function ListedVanDetails() {
   }, [id]);
 
   if (!van) {
-    return <h2>Loading...</h2>;
+    return <h2 style={{ padding: "var(--default-padding)" }}>Loading...</h2>;
   }
 
   return (
