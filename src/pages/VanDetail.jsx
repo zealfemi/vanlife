@@ -13,9 +13,7 @@ export default function Van() {
     fetch(`/api/vans/${params.id}`)
       .then((res) => res.json())
       .then((data) => setVan(data.vans));
-  }, []);
-
-  console.log(van);
+  }, [params]);
 
   return (
     <section className="van-details-section">
