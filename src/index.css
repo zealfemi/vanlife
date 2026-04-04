@@ -391,6 +391,7 @@ footer a {
 
 .van-card-pricing span {
   font-size: small;
+  text-align: right;
 }
 
 .van-type-simple,
