@@ -43,8 +43,6 @@ main {
   /* display: grid;
   grid-template-rows: 110px 1fr 75px;
   grid-template-areas: header main footer; */
-  border-left: 1px solid #e7e5e5;
-  border-right: 1px solid #e7e5e5;
   background-color: whitesmoke;
 }
 
