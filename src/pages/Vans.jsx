@@ -44,10 +44,8 @@ export default function Vans() {
   });
 
   function filterVans(type) {
-    setFiltered(type);
+    setFiltered((prevFilter) => (prevFilter === type ? "all" : type));
   }
-
-  // const filteredClass
 
   return (
     <section className="vans-page-section">
