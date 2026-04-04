@@ -354,8 +354,19 @@ footer a {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 16px;
   color: #161616;
+}
+
+.van-card-image {
+  position: relative;
+  width: 100%;
+}
+
+.van-card-image span {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .van-card img {
@@ -376,6 +387,10 @@ footer a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.van-card-pricing span {
+  font-size: small;
 }
 
 .van-type-simple,

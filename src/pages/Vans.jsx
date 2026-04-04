@@ -17,14 +17,16 @@ export default function Vans() {
     const vanCard = (
       <div className="van-card" key={van.id}>
         <Link to={`/vans/${van.id}`}>
-          <img src={van.imageUrl} alt={van.name} />
+          <div className="van-card-image">
+            <img src={van.imageUrl} alt={van.name} />
+            <span className={`small-button van-type-${van.type}`}>
+              {van.type}
+            </span>
+          </div>
         </Link>
         <div className="van-card-details">
           <div className="van-card-title">
             <p>{van.name}</p>
-            <span className={`small-button van-type-${van.type}`}>
-              {van.type}
-            </span>
           </div>
           <div className="van-card-pricing">
             <p>${van.price}</p>
