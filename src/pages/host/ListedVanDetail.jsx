@@ -1,15 +1,7 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 export default function ListedVanDetail() {
-  const [van, setVan] = useState({});
-  const { id } = useParams();
-
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans[0]));
-  }, [id]);
+  const { van } = useOutletContext();
 
   return (
     <>
@@ -27,7 +19,7 @@ export default function ListedVanDetail() {
           {van.description}
         </p>
         <p>
-          <span className="medium-text">Visibility:</span>
+          <span className="medium-text">Visibility: </span> Public
         </p>
       </div>
     </>

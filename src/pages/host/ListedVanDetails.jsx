@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import arrow from "../../assets/arrow.svg";
 
 export default function ListedVanDetails() {
-  const [van, setVan] = useState({});
+  const [van, setVan] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -12,9 +12,13 @@ export default function ListedVanDetails() {
       .then((data) => setVan(data.vans[0]));
   }, [id]);
 
+  if (!van) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
     <section className="listed-van-detail-section">
-      <Link to="/host/vans" className="van-details-breadcrumb">
+      <Link to=".." relative="path" className="van-details-breadcrumb">
         <img src={arrow} alt="arrow back" />
         <span>Back to all vans</span>
       </Link>
@@ -38,27 +42,27 @@ export default function ListedVanDetails() {
 
         <nav className="listed-van-nav nav-links">
           <NavLink
-            to={`/host/vans/${id}`}
+            to="."
             end
             className={({ isActive }) => (isActive ? "is-active" : null)}
           >
             Details
           </NavLink>
           <NavLink
-            to={`/host/vans/${id}/pricing`}
+            to="pricing"
             className={({ isActive }) => (isActive ? "is-active" : null)}
           >
             Pricing
           </NavLink>
           <NavLink
-            to={`/host/vans/${id}/photos`}
+            to="photos"
             className={({ isActive }) => (isActive ? "is-active" : null)}
           >
             Photos
           </NavLink>
         </nav>
 
-        <Outlet />
+        <Outlet context={{ van }} />
       </div>
     </section>
   );

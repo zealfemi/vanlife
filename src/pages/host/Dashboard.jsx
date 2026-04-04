@@ -41,10 +41,7 @@ export default function Dashboard() {
         </div>
 
         <p className="medium-text">
-          <Link
-            to="/host/income"
-            style={{ color: "black", textDecoration: "none" }}
-          >
+          <Link to="income" style={{ color: "black", textDecoration: "none" }}>
             Details
           </Link>
         </p>
@@ -63,10 +60,7 @@ export default function Dashboard() {
         </div>
 
         <p className="medium-text">
-          <Link
-            to="/host/reviews"
-            style={{ color: "black", textDecoration: "none" }}
-          >
+          <Link to="reviews" style={{ color: "black", textDecoration: "none" }}>
             Details
           </Link>
         </p>
@@ -76,16 +70,15 @@ export default function Dashboard() {
         <div className="dashboard-listed-vans-header">
           <h3>Your listed vans</h3>
           <p className="medium-text">
-            <Link
-              to="/host/vans"
-              style={{ color: "black", textDecoration: "none" }}
-            >
+            <Link to="vans" style={{ color: "black", textDecoration: "none" }}>
               View all
             </Link>
           </p>
         </div>
 
-        <div className="dashboard-vans-list">{listedVansEl}</div>
+        <div className="dashboard-vans-list">
+          {listedVans.length > 0 ? listedVansEl : <h2>Loading...</h2>}
+        </div>
       </div>
     </section>
   );
