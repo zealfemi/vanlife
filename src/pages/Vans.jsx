@@ -48,7 +48,7 @@ export default function Vans() {
   }
 
   return (
-    <section className="vans-page-section">
+    <section className="vans-page-section grow-section">
       <div className="vans-page-header">
         <h1>Explore our van options</h1>
         <div className="vans-filters">

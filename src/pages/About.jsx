@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function About() {
   return (
-    <section>
+    <section className="grow-section">
       <div className="about-hero">
         <img src={aboutHero} alt="about hero" className="about-hero-img" />
       </div>

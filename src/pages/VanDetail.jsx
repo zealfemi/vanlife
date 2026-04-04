@@ -16,7 +16,7 @@ export default function Van() {
   }, [params]);
 
   return (
-    <section className="van-details-section">
+    <section className="van-details-section grow-section">
       <Link to="/vans" className="van-details-breadcrumb">
         <img src={arrow} alt="arrow back" />
         <span>Back to all vans</span>
