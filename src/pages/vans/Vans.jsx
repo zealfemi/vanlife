@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import "../../server";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useSearchParams } from "react-router-dom";
 import clsx from "clsx";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
-  const [filtered, setFiltered] = useState("all");
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filtered = searchParams.get("type");
 
   useEffect(() => {
     fetch("/api/vans")
@@ -13,8 +16,12 @@ export default function Vans() {
       .then((data) => setVans(data.vans));
   }, []);
 
-  const vansEl = vans.map((van) => {
-    const vanCard = (
+  const filteredType = filtered
+    ? vans.filter((van) => van.type.toLowerCase() === filtered)
+    : vans;
+
+  const vansEl = filteredType.map((van) => {
+    return (
       <div className="van-card" key={van.id}>
         <Link to={`/vans/${van.id}`}>
           <div className="van-card-image">
@@ -35,17 +42,7 @@ export default function Vans() {
         </div>
       </div>
     );
-
-    if (filtered != "all" && van.type === filtered) {
-      return vanCard;
-    } else if (filtered === "all") {
-      return vanCard;
-    }
   });
-
-  function filterVans(type) {
-    setFiltered((prevFilter) => (prevFilter === type ? "all" : type));
-  }
 
   return (
     <section className="vans-page-section grow-section">
@@ -54,7 +51,11 @@ export default function Vans() {
         <div className="vans-filters">
           <div className="vans-filter-buttons">
             <button
-              onClick={() => filterVans("simple")}
+              onClick={() => {
+                filtered === "simple"
+                  ? setSearchParams({})
+                  : setSearchParams({ type: "simple" });
+              }}
               className={clsx("small-button", {
                 "van-type-simple": filtered === "simple",
               })}
@@ -62,7 +63,11 @@ export default function Vans() {
               simple
             </button>
             <button
-              onClick={() => filterVans("luxury")}
+              onClick={() => {
+                filtered === "luxury"
+                  ? setSearchParams({})
+                  : setSearchParams({ type: "luxury" });
+              }}
               className={clsx("small-button", {
                 "van-type-luxury": filtered === "luxury",
               })}
@@ -70,7 +75,11 @@ export default function Vans() {
               luxury
             </button>
             <button
-              onClick={() => filterVans("rugged")}
+              onClick={() => {
+                filtered === "rugged"
+                  ? setSearchParams({})
+                  : setSearchParams({ type: "rugged" });
+              }}
               className={clsx("small-button", {
                 "van-type-rugged": filtered === "rugged",
               })}
@@ -80,15 +89,17 @@ export default function Vans() {
           </div>
 
           <button
+            onClick={() => {
+              setSearchParams({});
+            }}
             className="vans-clear-filters-button"
-            onClick={() => filterVans("all")}
           >
             Clear filters
           </button>
         </div>
 
         <p className="filtered-by">
-          {filtered != "all" && `Filtered by: ${filtered}`}
+          {filtered != null && `Filtered by: ${filtered}`}
         </p>
       </div>
 

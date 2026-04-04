@@ -14,12 +14,15 @@ import ListedVanDetail from "./pages/host/ListedVanDetail";
 import ListedVanPricing from "./pages/host/ListedVanPricing";
 import ListedVanPhotos from "./pages/host/ListedVanPhotos";
 
+import Prac from "./Prac";
+
 function App() {
   return (
     <BrowserRouter>
       <main>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route path="prac" element={<Prac />} />
             <Route index element={<Home />} />
             <Route path="*" element={<Home />} />
             <Route path="about" element={<About />} />
