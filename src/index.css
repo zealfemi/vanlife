@@ -134,7 +134,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
 }
 
 .nav-links a {
@@ -468,7 +468,8 @@ button.van-type-luxury {
 nav.host-page-nav {
   display: flex;
   justify-content: start;
-  gap: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 30px var(--default-padding) 45px;
 }
 
