@@ -1,5 +1,34 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import star from "../../assets/star.svg";
+
+import "../../server";
+
 export default function Dashboard() {
+  const [listedVans, setListedVans] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/host/vans")
+      .then((res) => res.json())
+      .then((data) => setListedVans(data.vans));
+  }, []);
+
+  const listedVansEl = listedVans.map((van) => {
+    return (
+      <div className="dashboard-van" key={van.id}>
+        <div className="dashboard-van-details">
+          <img src={van.imageUrl} alt={van.name} />
+          <div>
+            <h3>{van.name}</h3>
+            <p>${van.price}/day</p>
+          </div>
+        </div>
+
+        <p className="medium-text">Edit</p>
+      </div>
+    );
+  });
+
   return (
     <section>
       <div className="dashboard-welcome">
@@ -11,7 +40,14 @@ export default function Dashboard() {
           <h2 className="income">$2,260</h2>
         </div>
 
-        <p className="medium-text">Details</p>
+        <p className="medium-text">
+          <Link
+            to="/host/income"
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            Details
+          </Link>
+        </p>
       </div>
 
       <div className="dashboard-review-score">
@@ -26,39 +62,30 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <p className="medium-text">Details</p>
+        <p className="medium-text">
+          <Link
+            to="/host/reviews"
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            Details
+          </Link>
+        </p>
       </div>
 
       <div className="dashboard-listed-vans">
         <div className="dashboard-listed-vans-header">
           <h3>Your listed vans</h3>
-          <p className="medium-text">View all</p>
+          <p className="medium-text">
+            <Link
+              to="/host/vans"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              View all
+            </Link>
+          </p>
         </div>
 
-        <div className="dashboard-vans-list">
-          <div className="dashboard-van">
-            <div className="dashboard-van-details">
-              <img src="" alt="van name" />
-              <div>
-                <h3>Van name</h3>
-                <p>$30/day</p>
-              </div>
-            </div>
-
-            <p className="medium-text">Edit</p>
-          </div>
-          <div className="dashboard-van">
-            <div className="dashboard-van-details">
-              <img src="" alt="van name" />
-              <div>
-                <h3>Van name</h3>
-                <p>$30/day</p>
-              </div>
-            </div>
-
-            <p className="medium-text">Edit</p>
-          </div>
-        </div>
+        <div className="dashboard-vans-list">{listedVansEl}</div>
       </div>
     </section>
   );

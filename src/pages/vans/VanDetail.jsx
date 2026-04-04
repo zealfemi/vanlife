@@ -3,7 +3,7 @@ import "../../server";
 import arrow from "../../assets/arrow.svg";
 import { Link, useParams } from "react-router-dom";
 
-export default function Van() {
+export default function VanDetail() {
   const params = useParams();
 
   const [van, setVan] = useState(null);
