@@ -7,7 +7,7 @@ import "../server";
 export default function Van() {
   const params = useParams();
 
-  const [van, setVan] = useState({});
+  const [van, setVan] = useState(null);
 
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
@@ -22,23 +22,27 @@ export default function Van() {
         <span>Back to all vans</span>
       </Link>
 
-      <div>
-        <img src={van.imageUrl} alt={van.name} className="van-image" />
+      {van ? (
+        <div>
+          <img src={van.imageUrl} alt={van.name} className="van-image" />
 
-        <div className="van-details">
-          <span className={`small-button van-type-${van.type}`}>
-            {van.type}
-          </span>
-          <h1>{van.name}</h1>
-          <h2>
-            ${van.price}
-            <span>/day</span>
-          </h2>
-          <p>{van.description}</p>
+          <div className="van-details">
+            <span className={`small-button van-type-${van.type}`}>
+              {van.type}
+            </span>
+            <h1>{van.name}</h1>
+            <h2>
+              ${van.price}
+              <span>/day</span>
+            </h2>
+            <p>{van.description}</p>
 
-          <button className="big-button">Rent this van</button>
+            <button className="big-button">Rent this van</button>
+          </div>
         </div>
-      </div>
+      ) : (
+        "Loading..."
+      )}
     </section>
   );
 }

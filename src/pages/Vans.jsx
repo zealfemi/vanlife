@@ -92,7 +92,7 @@ export default function Vans() {
         </p>
       </div>
 
-      <div className="vans-cards">{vansEl}</div>
+      <div className="vans-cards">{vansEl ? vansEl : "Loading vans..."}</div>
     </section>
   );
 }
