@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import "../server";
-import arrow from "../assets/arrow.svg";
+import "../../server";
+import arrow from "../../assets/arrow.svg";
 import { Link, useParams } from "react-router-dom";
-import "../server";
 
 export default function Van() {
   const params = useParams();

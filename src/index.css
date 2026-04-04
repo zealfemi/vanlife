@@ -10,6 +10,11 @@
   --light-clay: #FFCC8D;
 }
 
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -129,7 +134,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 20px;
 }
 
 .nav-links a {
@@ -456,4 +461,123 @@ button.van-type-luxury {
 .van-details>button {
   background-color: var(--orange);
   margin-top: 10px;
+}
+
+/* HOST PAGE */
+
+nav.host-page-nav {
+  display: flex;
+  justify-content: start;
+  gap: 30px;
+  padding: 30px var(--default-padding) 45px;
+}
+
+nav.host-page-nav a {
+  text-decoration: none;
+  color: #4D4D4D;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.dashboard-welcome,
+.income-section {
+  padding: 37px var(--default-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dashboard-welcome {
+  background-color: #FFEAD0;
+}
+
+.dashboard-welcome div,
+.income-section div,
+.reviews-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.medium-text {
+  font-weight: 700;
+}
+
+.dashboard-welcome .income {
+  font-weight: 800;
+  font-size: 48px;
+}
+
+.dashboard-review-score {
+  background-color: #FFDDB2;
+  padding: 45px var(--default-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-review-score>div,
+.reviews-section>div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-review-score>div>div,
+.reviews-section>div>div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dashboard-review-score>div>h3,
+.dashboard-listed-vans-header h3 {
+  font-size: 24px;
+}
+
+.dashboard-listed-vans,
+.income-section,
+.reviews-section {
+  padding: 40px var(--default-padding) 60px;
+}
+
+.dashboard-listed-vans-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.dashboard-vans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dashboard-van {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  padding: 20px 25px;
+}
+
+.dashboard-van-details {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dashboard-van-details img {
+  height: 65px;
+  width: 65px;
+  object-fit: cover;
+}
+
+.dashboard-van-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

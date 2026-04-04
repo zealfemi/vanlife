@@ -8,8 +8,9 @@ export default function Header() {
           <Link to="">#VANLIFE</Link>
         </div>
         <div className="nav-links">
-          <Link to="about ">about</Link>
-          <Link to="vans">vans</Link>
+          <Link to="/host">host</Link>
+          <Link to="/about">about</Link>
+          <Link to="/vans">vans</Link>
         </div>
       </nav>
     </header>
