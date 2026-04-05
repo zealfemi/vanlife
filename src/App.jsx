@@ -1,11 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// LAYOUTS
 import Layout from "./components/Layout";
 import HostLayout from "./components/HostLayout";
+
+// PAGES
 import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import About from "./pages/About";
+
+// VANS PAGE
 import Vans from "./pages/vans/Vans";
 import Van from "./pages/vans/VanDetail";
+
+// HOST PAGE
 import Dashboard from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import Reviews from "./pages/host/Reviews";
