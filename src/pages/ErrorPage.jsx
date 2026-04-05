@@ -4,7 +4,7 @@ export default function ErrorPage() {
   return (
     <section className="grow-section error-page">
       <h1>Sorry, the page you were looking for was not found!</h1>
-      <Link to="" className="big-button">
+      <Link to=".." className="big-button">
         Return to home
       </Link>
     </section>
