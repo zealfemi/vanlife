@@ -181,6 +181,20 @@ footer a {
   color: #AAAAAA;
 }
 
+/* ERROR PAGE */
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+  padding: var(--default-padding);
+}
+
+.error-page a {
+  background-color: var(--black);
+}
+
 /* HOME PAGE*/
 
 .home-section {

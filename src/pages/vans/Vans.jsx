@@ -23,7 +23,10 @@ export default function Vans() {
   const vansEl = filteredType.map((van) => {
     return (
       <div className="van-card" key={van.id}>
-        <Link to={`/vans/${van.id}`}>
+        <Link
+          to={van.id}
+          state={{ search: searchParams.toString(), type: filtered }}
+        >
           <div className="van-card-image">
             <img src={van.imageUrl} alt={van.name} />
             <span className={`small-button van-type-${van.type}`}>
@@ -88,14 +91,16 @@ export default function Vans() {
             </button>
           </div>
 
-          <button
-            onClick={() => {
-              setSearchParams({});
-            }}
-            className="vans-clear-filters-button"
-          >
-            Clear filters
-          </button>
+          {filtered && (
+            <button
+              onClick={() => {
+                setSearchParams({});
+              }}
+              className="vans-clear-filters-button"
+            >
+              Clear filters
+            </button>
+          )}
         </div>
 
         <p className="filtered-by">

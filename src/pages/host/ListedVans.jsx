@@ -14,7 +14,7 @@ export default function ListedVans() {
   const listedVansEl = listedVans.map((van) => {
     return (
       <Link
-        to={`/host/vans/${van.id}`}
+        to={van.id}
         key={van.id}
         style={{ color: "inherit", textDecoration: "none" }}
       >

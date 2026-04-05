@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HostLayout from "./components/HostLayout";
+import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Vans from "./pages/vans/Vans";
@@ -23,8 +24,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="prac" element={<Prac />} />
+            <Route path="*" element={<ErrorPage />} />
             <Route index element={<Home />} />
-            <Route path="*" element={<Home />} />
             <Route path="about" element={<About />} />
 
             <Route path="vans" element={<Vans />} />
