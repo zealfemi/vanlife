@@ -2,18 +2,32 @@ import { useState, useEffect } from "react";
 import "../../server";
 import { Link, NavLink, useSearchParams } from "react-router-dom";
 import clsx from "clsx";
+import { getVans } from "../../api";
 
 export default function Vans() {
   const [vans, setVans] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const filtered = searchParams.get("type");
 
   useEffect(() => {
-    fetch("/api/vans")
-      .then((res) => res.json())
-      .then((data) => setVans(data.vans));
+    async function loadGetVans() {
+      setLoading(true);
+
+      try {
+        const data = await getVans();
+        setVans(data);
+      } catch (err) {
+        setApiError(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadGetVans();
   }, []);
 
   const filteredType = filtered
@@ -46,6 +60,22 @@ export default function Vans() {
       </div>
     );
   });
+
+  if (loading) {
+    return (
+      <section className="vans-page-section grow-section">
+        <h2>Loading...</h2>
+      </section>
+    );
+  }
+
+  if (apiError != null) {
+    return (
+      <section className="vans-page-section grow-section">
+        <h2>There was an error: {apiError.message}</h2>
+      </section>
+    );
+  }
 
   return (
     <section className="vans-page-section grow-section">
