@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <section className="home-section grow-section">
+    <section className="home-section">
       <div className="home-content">
         <h1>You got the travel plans, we got the travel vans.</h1>
         <p>

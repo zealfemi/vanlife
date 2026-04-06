@@ -204,7 +204,7 @@ footer a {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100% !important;
+  min-height: calc(100vh - 185px);
   display: flex;
   flex-direction: column;
   justify-content: center;

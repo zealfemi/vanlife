@@ -4,6 +4,10 @@ import { Link, NavLink, useSearchParams } from "react-router-dom";
 import clsx from "clsx";
 import { getVans } from "../../api";
 
+export function loader() {
+  return "Van data is here";
+}
+
 export default function Vans() {
   const [vans, setVans] = useState([]);
   const [loading, setLoading] = useState(false);
