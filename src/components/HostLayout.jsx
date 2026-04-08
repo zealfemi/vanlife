@@ -6,6 +6,10 @@ export default function HostLayout() {
     textDecoration: "underline",
     color: "#161616",
   };
+  const isLogged = false;
+  if (!isLogged) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <section className="grow-section">
