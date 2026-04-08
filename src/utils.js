@@ -1,8 +1,11 @@
 import { redirect, Navigate } from "react-router-dom";
 
 export async function requireAuth() {
-  const isLogged = false;
-  if (!isLogged) {
-    throw redirect("/login");
+  const isLoggedIn = false;
+  if (!isLoggedIn) {
+    const response = redirect("/login");
+    response.body = true;
+    throw response;
   }
+  return null;
 }

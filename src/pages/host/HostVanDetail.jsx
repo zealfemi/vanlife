@@ -3,12 +3,14 @@ import arrow from "../../assets/arrow.svg";
 
 import "../../server";
 import { getHostVans } from "../../api";
+import { requireAuth } from "../../utils";
 
-export function Loader({ params }) {
+export async function Loader({ params }) {
+  await requireAuth();
   return getHostVans(params.id);
 }
 
-export default function ListedVanDetails() {
+export default function HostVanDetail() {
   const van = useLoaderData();
 
   return (

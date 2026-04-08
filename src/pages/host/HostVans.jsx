@@ -1,5 +1,12 @@
 import { Link, useLoaderData } from "react-router-dom";
 import "../../server";
+import { getHostVans } from "../../api";
+import { requireAuth } from "../../utils";
+
+export async function Loader() {
+  await requireAuth();
+  return getHostVans();
+}
 
 export default function ListedVans() {
   const listedVans = useLoaderData();

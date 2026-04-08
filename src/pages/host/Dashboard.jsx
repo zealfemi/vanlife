@@ -1,32 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, redirect, Navigate } from "react-router-dom";
 import star from "../../assets/star.svg";
-import { useLoaderData } from "react-router-dom";
 
 import "../../server";
-import { getHostVans } from "../../api";
-
-export function Loader() {
-  return getHostVans();
-}
 
 export default function Dashboard() {
-  const listedVans = useLoaderData();
+  // const listedVans = useLoaderData();
 
-  const listedVansEl = listedVans.map((van) => {
-    return (
-      <div className="dashboard-van" key={van.id}>
-        <div className="dashboard-van-details">
-          <img src={van.imageUrl} alt={van.name} />
-          <div>
-            <h3>{van.name}</h3>
-            <p>${van.price}/day</p>
-          </div>
-        </div>
+  // const listedVansEl = listedVans.map((van) => {
+  //   return (
+  //     <div className="dashboard-van" key={van.id}>
+  //       <div className="dashboard-van-details">
+  //         <img src={van.imageUrl} alt={van.name} />
+  //         <div>
+  //           <h3>{van.name}</h3>
+  //           <p>${van.price}/day</p>
+  //         </div>
+  //       </div>
 
-        <p className="medium-text">Edit</p>
-      </div>
-    );
-  });
+  //       <p className="medium-text">Edit</p>
+  //     </div>
+  //   );
+  // });
 
   return (
     <section>
@@ -75,7 +69,7 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="dashboard-vans-list">{listedVansEl}</div>
+        {/* <div className="dashboard-vans-list">{listedVansEl}</div> */}
       </div>
     </section>
   );
