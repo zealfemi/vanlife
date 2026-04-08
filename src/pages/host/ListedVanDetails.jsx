@@ -1,20 +1,15 @@
-import { useState, useEffect } from "react";
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import arrow from "../../assets/arrow.svg";
 
+import "../../server";
+import { getHostVans } from "../../api";
+
+export function Loader({ params }) {
+  return getHostVans(params.id);
+}
+
 export default function ListedVanDetails() {
-  const [van, setVan] = useState(null);
-  const { id } = useParams();
-
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans[0]));
-  }, [id]);
-
-  if (!van) {
-    return <h2 style={{ padding: "var(--default-padding)" }}>Loading...</h2>;
-  }
+  const van = useLoaderData();
 
   return (
     <section className="listed-van-detail-section">

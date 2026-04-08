@@ -1,17 +1,16 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import star from "../../assets/star.svg";
+import { useLoaderData } from "react-router-dom";
 
 import "../../server";
+import { getHostVans } from "../../api";
+
+export function Loader() {
+  return getHostVans();
+}
 
 export default function Dashboard() {
-  const [listedVans, setListedVans] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/host/vans")
-      .then((res) => res.json())
-      .then((data) => setListedVans(data.vans));
-  }, []);
+  const listedVans = useLoaderData();
 
   const listedVansEl = listedVans.map((van) => {
     return (
@@ -76,9 +75,7 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="dashboard-vans-list">
-          {listedVans.length > 0 ? listedVansEl : <h2>Loading...</h2>}
-        </div>
+        <div className="dashboard-vans-list">{listedVansEl}</div>
       </div>
     </section>
   );

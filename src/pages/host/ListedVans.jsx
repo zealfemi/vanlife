@@ -1,15 +1,8 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import "../../server";
 
 export default function ListedVans() {
-  const [listedVans, setListedVans] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/host/vans")
-      .then((res) => res.json())
-      .then((data) => setListedVans(data.vans));
-  }, []);
+  const listedVans = useLoaderData();
 
   const listedVansEl = listedVans.map((van) => {
     return (
@@ -37,9 +30,7 @@ export default function ListedVans() {
         <h1>Your listed vans</h1>
       </div>
 
-      <div className="dashboard-vans-list">
-        {listedVans.length > 0 ? listedVansEl : <h2>Loading...</h2>}
-      </div>
+      <div className="dashboard-vans-list">{listedVansEl}</div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, redirect, Navigate } from "react-router-dom";
 
 export default function HostLayout() {
   const styles = {
@@ -6,6 +6,7 @@ export default function HostLayout() {
     textDecoration: "underline",
     color: "#161616",
   };
+
   return (
     <section className="grow-section">
       <nav className="host-page-nav nav-links">

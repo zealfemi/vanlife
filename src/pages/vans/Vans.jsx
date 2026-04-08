@@ -1,38 +1,19 @@
-import { useState, useEffect } from "react";
 import "../../server";
-import { Link, NavLink, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
 import clsx from "clsx";
 import { getVans } from "../../api";
 
-export function loader() {
-  return "Van data is here";
+export function Loader() {
+  return getVans();
 }
 
 export default function Vans() {
-  const [vans, setVans] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [apiError, setApiError] = useState(null);
+  // LOADER DATA
+  const vans = useLoaderData();
 
+  // STATE || PARAMS
   const [searchParams, setSearchParams] = useSearchParams();
-
   const filtered = searchParams.get("type");
-
-  useEffect(() => {
-    async function loadGetVans() {
-      setLoading(true);
-
-      try {
-        const data = await getVans();
-        setVans(data);
-      } catch (err) {
-        setApiError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadGetVans();
-  }, []);
 
   const filteredType = filtered
     ? vans.filter((van) => van.type.toLowerCase() === filtered)
@@ -64,22 +45,6 @@ export default function Vans() {
       </div>
     );
   });
-
-  if (loading) {
-    return (
-      <section className="vans-page-section grow-section">
-        <h2>Loading...</h2>
-      </section>
-    );
-  }
-
-  if (apiError != null) {
-    return (
-      <section className="vans-page-section grow-section">
-        <h2>There was an error: {apiError.message}</h2>
-      </section>
-    );
-  }
 
   return (
     <section className="vans-page-section grow-section">
