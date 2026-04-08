@@ -81,7 +81,7 @@ const router = createBrowserRouter(
         path="host"
         element={<HostLayout />}
         loader={async () => {
-          return await requireAuth();
+          return null;
         }}
       >
         <Route index element={<Dashboard />} loader={hostVansLoader} />

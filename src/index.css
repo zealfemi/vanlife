@@ -140,7 +140,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: clamp(10px, 2vw, 15px);
 }
 
 .nav-links a {
@@ -151,6 +151,9 @@ nav {
   font-size: 16px;
   line-height: 23px;
   color: #4D4D4D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-links a:hover,
