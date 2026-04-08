@@ -1,4 +1,4 @@
-import { Link, redirect, Navigate } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import star from "../../assets/star.svg";
 
 import "../../server";
