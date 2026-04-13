@@ -1,17 +1,16 @@
 import { useState } from "react";
-import {
-  Link,
-  useLoaderData,
-  useNavigate,
-  Form,
-  redirect,
-  useActionData,
-  replace,
-} from "react-router-dom";
+import { Link, useLoaderData, Form, redirect } from "react-router-dom";
 
 import { loginUser } from "../api";
 
 export function Loader({ request }) {
+  // IF USER LOGGED IN
+  if (localStorage.getItem("loggedIn")) {
+    const response = redirect("/host");
+    response.body = true;
+    return response;
+  }
+  // IF NOT LOGGED IN
   const url = new URL(request.url).searchParams.get("message");
   return url;
 }
@@ -23,7 +22,7 @@ export async function Action({ request }) {
 
   const data = await loginUser({ email, password });
   localStorage.setItem("loggedIn", true);
-  const res = redirect("/host", { replace: true });
+  const res = redirect("/host");
   res.body = true;
 
   return res;
@@ -66,7 +65,7 @@ export default function Login() {
         {error && <h3 style={{ color: "red" }}>{error}</h3>}
       </div>
 
-      <Form method="post" className="login-form">
+      <Form method="post" className="login-form" replace>
         <input name="email" type="email" placeholder="Email address" />
         <input name="password" type="password" placeholder="Password" />
         <button
