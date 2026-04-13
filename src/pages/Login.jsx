@@ -37,10 +37,11 @@ export async function Action({ request }) {
   } catch (err) {
     return err.message;
   }
-  // return null;
 }
 
 export default function Login() {
+  const [status, setStatus] = useState("idle");
+
   const loginMessage = useLoaderData();
   const errorMessage = useActionData();
 
