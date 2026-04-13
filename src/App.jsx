@@ -13,7 +13,10 @@ import HostLayout from "./components/HostLayout";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Login from "./pages/Login";
+import Login, {
+  Loader as loginLoader,
+  Action as loginFormAction,
+} from "./pages/Login";
 
 // VANS PAGE
 import Vans, { Loader as vansLoader } from "./pages/vans/Vans";
@@ -45,7 +48,12 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="login" element={<Login />} />
+      <Route
+        path="login"
+        element={<Login />}
+        loader={loginLoader}
+        action={loginFormAction}
+      />
 
       <Route
         path="vans"
