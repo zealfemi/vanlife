@@ -2,6 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import account from "../assets/account-icon.svg";
 
 export default function Header() {
+  function logout() {
+    localStorage.removeItem("loggedIn");
+  }
+
   return (
     <header>
       <nav>
@@ -33,6 +37,9 @@ export default function Header() {
           >
             <img src={account} alt="login avatar icon" />
           </NavLink>
+          {localStorage.getItem("loggedIn") && (
+            <button onClick={logout}>X</button>
+          )}
         </div>
       </nav>
     </header>
