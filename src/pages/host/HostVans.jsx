@@ -3,9 +3,10 @@ import "../../server";
 import { getHostVans } from "../../api";
 import { requireAuth } from "../../utils";
 
-export async function Loader() {
-  await requireAuth();
-  return getHostVans();
+export async function Loader({ request }) {
+  await requireAuth(request);
+  console.log(requireAuth(request));
+  return await getHostVans();
 }
 
 export default function ListedVans() {

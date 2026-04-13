@@ -1,10 +1,10 @@
-import { useState } from "react";
 import {
   Link,
   useLoaderData,
   useActionData,
   Form,
   redirect,
+  useNavigation,
 } from "react-router-dom";
 
 import { loginUser } from "../api";
@@ -27,11 +27,14 @@ export async function Action({ request }) {
   const email = formData.get("email");
   const password = formData.get("password");
 
+  const redirectTo =
+    new URL(request.url).searchParams.get("redirectTo") || "/host";
+
   try {
     const data = await loginUser({ email, password });
     localStorage.setItem("loggedIn", true);
 
-    const res = redirect("/host");
+    const res = redirect(redirectTo);
     res.body = true;
     return res;
   } catch (err) {
@@ -40,10 +43,9 @@ export async function Action({ request }) {
 }
 
 export default function Login() {
-  const [status, setStatus] = useState("idle");
-
   const loginMessage = useLoaderData();
   const errorMessage = useActionData();
+  const navigation = useNavigation();
 
   return (
     <div className="login-container">
@@ -61,9 +63,9 @@ export default function Login() {
         <input name="password" type="password" placeholder="Password" />
         <button
           style={{ cursor: "pointer" }}
-          disabled={status === "submitting"}
+          disabled={navigation.state === "submitting"}
         >
-          {status === "submitting" ? "Signing in..." : "Sign in"}
+          {navigation.state === "submitting" ? "Signing in..." : "Sign in"}
         </button>
       </Form>
 
