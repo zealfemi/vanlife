@@ -23,11 +23,10 @@ export async function Action({ request }) {
 
   const data = await loginUser({ email, password });
   localStorage.setItem("loggedIn", true);
-  // const res = redirect("/host", { replace: true });
-  // res.body = true;
-  // throw res;
+  const res = redirect("/host", { replace: true });
+  res.body = true;
 
-  return redirect("/host");
+  return res;
 }
 
 export default function Login() {
