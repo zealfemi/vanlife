@@ -31,14 +31,15 @@ export default function Header() {
           >
             vans
           </NavLink>
-          <NavLink
-            to="login"
-            className={({ isActive }) => (isActive ? "is-active" : null)}
-          >
-            <img src={account} alt="login avatar icon" />
-          </NavLink>
-          {localStorage.getItem("loggedIn") && (
+          {localStorage.getItem("loggedIn") ? (
             <button onClick={logout}>X</button>
+          ) : (
+            <NavLink
+              to="login"
+              className={({ isActive }) => (isActive ? "is-active" : null)}
+            >
+              <img src={account} alt="login avatar icon" />
+            </NavLink>
           )}
         </div>
       </nav>
