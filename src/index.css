@@ -140,7 +140,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(10px, 2vw, 15px);
+  gap: 10px
 }
 
 .nav-links a {
