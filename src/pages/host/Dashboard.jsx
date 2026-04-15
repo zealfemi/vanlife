@@ -1,26 +1,30 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import { Link, useLoaderData, Await } from "react-router-dom";
 import star from "../../assets/star.svg";
 
 import "../../server";
 
 export default function Dashboard() {
-  // const listedVans = useLoaderData();
+  const loadedHostVans = useLoaderData();
 
-  // const listedVansEl = listedVans.map((van) => {
-  //   return (
-  //     <div className="dashboard-van" key={van.id}>
-  //       <div className="dashboard-van-details">
-  //         <img src={van.imageUrl} alt={van.name} />
-  //         <div>
-  //           <h3>{van.name}</h3>
-  //           <p>${van.price}/day</p>
-  //         </div>
-  //       </div>
+  function hostVansElement(hostVans) {
+    const listedVansEl = hostVans.map((van) => {
+      return (
+        <div className="dashboard-van" key={van.id}>
+          <div className="dashboard-van-details">
+            <img src={van.imageUrl} alt={van.name} />
+            <div>
+              <h3>{van.name}</h3>
+              <p>${van.price}/day</p>
+            </div>
+          </div>
 
-  //       <p className="medium-text">Edit</p>
-  //     </div>
-  //   );
-  // });
+          <p className="medium-text">Edit</p>
+        </div>
+      );
+    });
+    return <div className="dashboard-vans-list">{listedVansEl}</div>;
+  }
 
   return (
     <section>
@@ -69,7 +73,11 @@ export default function Dashboard() {
           </p>
         </div>
 
-        {/* <div className="dashboard-vans-list">{listedVansEl}</div> */}
+        <Suspense fallback={<h3>Loading vans...</h3>}>
+          <Await resolve={loadedHostVans.hostVans}>
+            {(hostVans) => hostVansElement(hostVans)}
+          </Await>
+        </Suspense>
       </div>
     </section>
   );

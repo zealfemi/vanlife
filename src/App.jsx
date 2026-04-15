@@ -76,11 +76,7 @@ const router = createBrowserRouter(
         loader={async ({ request }) => await requireAuth(request)}
         errorElement={<ApiError />}
       >
-        <Route
-          index
-          element={<Dashboard />}
-          loader={async ({ request }) => await requireAuth(request)}
-        />
+        <Route index element={<Dashboard />} loader={HostVansLoader} />
         <Route
           path="income"
           element={<Income />}
