@@ -685,7 +685,7 @@ img.graph {
 .dashboard-listed-vans,
 .income-section,
 .reviews-section {
-  padding: 40px var(--default-padding) 60px;
+  padding: 10px var(--default-padding) 60px;
 }
 
 .dashboard-listed-vans-header {
