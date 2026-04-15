@@ -1,55 +1,55 @@
+import { Suspense } from "react";
 import "../../server";
-import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData, Await } from "react-router-dom";
 import clsx from "clsx";
 import { getVans } from "../../api";
 
-export function Loader() {
-  return getVans();
+export async function Loader() {
+  return { vans: getVans() };
 }
 
 export default function Vans() {
   // LOADER DATA
-  const vans = useLoaderData();
+  const loadedVansPromise = useLoaderData();
 
   // STATE || PARAMS
   const [searchParams, setSearchParams] = useSearchParams();
   const filtered = searchParams.get("type");
 
-  const filteredType = filtered
-    ? vans.filter((van) => van.type.toLowerCase() === filtered)
-    : vans;
+  function renderVansElement(vans) {
+    const filteredType = filtered
+      ? vans.filter((van) => van.type.toLowerCase() === filtered)
+      : vans;
 
-  const vansEl = filteredType.map((van) => {
-    return (
-      <div className="van-card" key={van.id}>
-        <Link
-          to={van.id}
-          state={{ search: searchParams.toString(), type: filtered }}
-        >
-          <div className="van-card-image">
-            <img src={van.imageUrl} alt={van.name} />
-            <span className={`small-button van-type-${van.type}`}>
-              {van.type}
-            </span>
-          </div>
-        </Link>
-        <div className="van-card-details">
-          <div className="van-card-title">
-            <p>{van.name}</p>
-          </div>
-          <div className="van-card-pricing">
-            <p>${van.price}</p>
-            <span>/day</span>
+    const vansEl = filteredType.map((van) => {
+      return (
+        <div className="van-card" key={van.id}>
+          <Link
+            to={van.id}
+            state={{ search: searchParams.toString(), type: filtered }}
+          >
+            <div className="van-card-image">
+              <img src={van.imageUrl} alt={van.name} />
+              <span className={`small-button van-type-${van.type}`}>
+                {van.type}
+              </span>
+            </div>
+          </Link>
+          <div className="van-card-details">
+            <div className="van-card-title">
+              <p>{van.name}</p>
+            </div>
+            <div className="van-card-pricing">
+              <p>${van.price}</p>
+              <span>/day</span>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  });
+      );
+    });
 
-  return (
-    <section className="vans-page-section grow-section">
-      <div className="vans-page-header">
-        <h1>Explore our van options</h1>
+    return (
+      <>
         <div className="vans-filters">
           <div className="vans-filter-buttons">
             <button
@@ -105,9 +105,22 @@ export default function Vans() {
         <p className="filtered-by">
           {filtered != null && `Filtered by: ${filtered}`}
         </p>
-      </div>
 
-      <div className="vans-cards">{vansEl}</div>
+        <div className="vans-cards">{vansEl}</div>
+      </>
+    );
+  }
+
+  return (
+    <section className="vans-page-section grow-section">
+      <div className="vans-page-header">
+        <h1>Explore our van options</h1>
+      </div>
+      <Suspense fallback={<h3>Loading vans...</h3>}>
+        <Await resolve={loadedVansPromise.vans}>
+          {(vans) => renderVansElement(vans)}
+        </Await>
+      </Suspense>
     </section>
   );
 }

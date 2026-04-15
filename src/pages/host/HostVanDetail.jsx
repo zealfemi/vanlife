@@ -1,4 +1,5 @@
-import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import { Link, NavLink, Outlet, useLoaderData, Await } from "react-router-dom";
 import arrow from "../../assets/arrow.svg";
 
 import "../../server";
@@ -7,19 +8,14 @@ import { requireAuth } from "../../utils";
 
 export async function Loader({ params, request }) {
   await requireAuth(request);
-  return await getHostVans(params.id);
+  return { van: getHostVans(params.id) };
 }
 
 export default function HostVanDetail() {
-  const van = useLoaderData();
+  const loadedHostVan = useLoaderData();
 
-  return (
-    <section className="listed-van-detail-section">
-      <Link to=".." relative="path" className="van-details-breadcrumb">
-        <img src={arrow} alt="arrow back" />
-        <span>Back to all vans</span>
-      </Link>
-
+  function hostVanElement(van) {
+    return (
       <div className="listed-van-detail">
         <div className="listed-van-short-detail">
           <img src={van.imageUrl} alt={van.name} />
@@ -61,6 +57,21 @@ export default function HostVanDetail() {
 
         <Outlet context={{ van }} />
       </div>
+    );
+  }
+
+  return (
+    <section className="listed-van-detail-section">
+      <Link to=".." relative="path" className="van-details-breadcrumb">
+        <img src={arrow} alt="arrow back" />
+        <span>Back to all vans</span>
+      </Link>
+
+      <Suspense fallback={<h3>Loading van...</h3>}>
+        <Await resolve={loadedHostVan.van}>
+          {(van) => hostVanElement(van)}
+        </Await>
+      </Suspense>
     </section>
   );
 }
