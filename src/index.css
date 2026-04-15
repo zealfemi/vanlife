@@ -561,6 +561,8 @@ nav.host-page-nav {
 
 .host-income>p {
   color: #4d4d4d;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .host-income>p span {
@@ -572,6 +574,7 @@ nav.host-page-nav {
   font-size: 38px;
   color: #161616;
   font-weight: 900;
+  margin-bottom: 15px;
 }
 
 img.graph {
@@ -581,6 +584,8 @@ img.graph {
 
 .host-income .info-header>p {
   color: #4d4d4d;
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
 .host-income .info-header>p span {

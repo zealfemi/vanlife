@@ -14,6 +14,7 @@ export default function Income() {
       </p>
       <h2>$2,260</h2>
       <img className="graph" src={incomeGraph} alt="Income graph" />
+
       <div className="info-header">
         <h3>Your transactions (3)</h3>
         <p>
