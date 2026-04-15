@@ -62,13 +62,19 @@ const router = createBrowserRouter(
         errorElement={<ApiError />}
         loader={vansLoader}
       />
-      <Route path="vans/:id" element={<Van />} loader={vanDetailLoader} />
+      <Route
+        path="vans/:id"
+        element={<Van />}
+        loader={vanDetailLoader}
+        errorElement={<ApiError />}
+      />
 
       {/* HOST DETAILS */}
       <Route
         path="host"
         element={<HostLayout />}
         loader={async ({ request }) => await requireAuth(request)}
+        errorElement={<ApiError />}
       >
         <Route
           index
