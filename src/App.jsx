@@ -38,7 +38,7 @@ import HostVanPhotos from "./pages/host/HostVanPhotos";
 import ApiError from "./components/ApiError";
 
 // SERVER
-import "./server";
+// import "./server";
 
 // AUTH
 import { requireAuth } from "./utils";

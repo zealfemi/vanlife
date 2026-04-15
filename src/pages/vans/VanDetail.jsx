@@ -2,10 +2,10 @@ import { Suspense } from "react";
 import "../../server";
 import arrow from "../../assets/arrow.svg";
 import { Link, useLocation, useLoaderData, Await } from "react-router-dom";
-import { getVans } from "../../api";
+import { getVan } from "../../api";
 
 export function Loader({ params }) {
-  return { van: getVans(params.id) };
+  return { van: getVan(params.id) };
 }
 
 export default function VanDetail() {

@@ -3,12 +3,12 @@ import { Link, NavLink, Outlet, useLoaderData, Await } from "react-router-dom";
 import arrow from "../../assets/arrow.svg";
 
 import "../../server";
-import { getHostVans } from "../../api";
+import { getVan } from "../../api";
 import { requireAuth } from "../../utils";
 
 export async function Loader({ params, request }) {
   await requireAuth(request);
-  return { van: getHostVans(params.id) };
+  return { van: getVan(params.id) };
 }
 
 export default function HostVanDetail() {

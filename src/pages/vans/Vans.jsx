@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import "../../server";
+// import "../../server";
 import { Link, useSearchParams, useLoaderData, Await } from "react-router-dom";
 import clsx from "clsx";
 import { getVans } from "../../api";
