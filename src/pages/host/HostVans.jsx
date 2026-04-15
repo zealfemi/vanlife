@@ -39,7 +39,7 @@ export default function ListedVans() {
   return (
     <section className="dashboard-listed-vans">
       <div className="dashboard-listed-vans-header">
-        <h1>Your listed vans</h1>
+        <h1 className="host-h1">Your listed vans</h1>
       </div>
 
       <Suspense fallback={<h3>Loading vans...</h3>}>

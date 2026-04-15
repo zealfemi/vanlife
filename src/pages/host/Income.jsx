@@ -8,7 +8,7 @@ export default function Income() {
   ];
   return (
     <section className="host-income">
-      <h1>Income</h1>
+      <h1 className="host-h1">Income</h1>
       <p>
         Last <span>30 days</span>
       </p>

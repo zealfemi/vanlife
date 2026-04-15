@@ -23,7 +23,7 @@ export default function Reviews() {
   return (
     <section className="host-reviews">
       <div className="top-text">
-        <h1>Your reviews</h1>
+        <h1 className="host-h1">Your reviews</h1>
         <p>
           Last <span>30 days</span>
         </p>

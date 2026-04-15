@@ -489,6 +489,11 @@ button.van-type-luxury {
 
 /* HOST PAGE */
 
+.host-h1 {
+  font-weight: 700;
+  font-size: 32px;
+}
+
 nav.host-page-nav {
   display: flex;
   justify-content: start;

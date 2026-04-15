@@ -30,7 +30,7 @@ export default function Dashboard() {
     <section>
       <div className="dashboard-welcome">
         <div>
-          <h1>Welcome!</h1>
+          <h1 className="host-h1">Welcome!</h1>
           <p>
             Income last <span className="medium-text">30 days</span>
           </p>
